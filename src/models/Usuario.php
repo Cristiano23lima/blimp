@@ -1,5 +1,6 @@
 <?php 
     class Usuario{
+        private $id;
         private $nome;
         private $email;
         private $senha;
@@ -7,6 +8,15 @@
         private $endereco;
 
         function __construct(){}
+        function __clone(){}
+
+        public function getId(){
+            return $this->id;
+        }
+
+        public function setId($id){
+            $this->id = $id;
+        }
 
         public function getNome(){
             return $this->nome;
