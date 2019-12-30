@@ -1,0 +1,6 @@
+nomenclatura dos arquivos
+
+exemplo para aluno
+nomenclatura-> AlunoController.php
+
+é no controller para onde voce envia os dados dos formularios

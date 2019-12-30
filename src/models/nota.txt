@@ -1,0 +1,29 @@
+Nomenclatura dos arquivos dentro do model
+
+Exemplo - model para aluno
+nome do arquivo -> AlunoModel
+
+função
+model é a parte que conecta o controller e o view com o banco de dados
+ou seja aqui fica nossas classes
+
+exemplo aluno
+    class Aluno{
+        private $nome;
+        private $sobrenome;
+        private $matricula;
+        private $telefone;
+        private $cpf;
+
+        public String getNome(){
+            return $this->nome;
+        }
+
+        public String getSobrenome(String $sobrenome){
+            return $this->sobrenome;
+        }
+
+        public String setNome(String $nome){
+            $this->nome = $nome;
+        }
+    }
