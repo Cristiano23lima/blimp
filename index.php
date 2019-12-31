@@ -1,3 +1,6 @@
+<?php 
+    include "src/config/autoLoad.php";
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 

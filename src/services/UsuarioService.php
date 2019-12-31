@@ -3,22 +3,22 @@
     require "../config/Conexao.php";
 
     class UsuarioService{
-        function inserirUsuario(Usuario $usuario){
+        public function inserirUsuario(Usuario $usuario){
             $conexao = new Conexao();
-            $inserir = $conexao->prepare("INSERT INTO tb_usuarios(email, nome, senha, telefone, endereco) VALUES(:email, :nome, :senha, :telefone, :endereco)");
+            $inserir = $conexao->abrirConexao()->prepare("INSERT INTO tb_usuarios(email, nome, senha, telefone, endereco) VALUES(:email, :nome, :senha, :telefone, :endereco)");
             $inserir->bindValue(":nome", $usuario->getNome());
             $inserir->bindValue(":email", $usuario->getEmail());
             $inserir->bindValue(":telefone", $usuario->getTelefone());
             $inserir->bindValue(":endereco", $usuario->getEndereco());
             $inserir->bindValue(":senha", password_hash($usuario->getSenha(), PASSWORD_DEFAULT));
             if($inserir->execute() === true){
-                return true;
+                return $usuario;//retorna o usuario cadastrado
             }else{
                 return false;
             }
         }
 
-        function buscarTodosUsuarios(){
+        public function buscarTodosUsuarios(){//retorna um array de dados
             $conexao = new Conexao();
             $buscar = $conexao->abrirConexao()->prepare("SELECT * FROM tb_usuarios");
             if($buscar->execute() === true){
@@ -28,7 +28,7 @@
             }
         }
 
-        function buscarUsuarioId($id){
+        public function buscarUsuarioId($id){
             $conexao = new Conexao();
             $buscar = $conexao->abrirConexao()->prepare("SELECT * FROM tb_usuarios WHERE id = :id");
             $buscar->bindValue(":id", $id);
