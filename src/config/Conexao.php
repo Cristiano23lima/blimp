@@ -1,12 +1,8 @@
 <?php 
-    include "../environment/env.php";
-
     class Conexao{
         private $conexao;
 
-        function __construct(){
-            $this->abrirConexao();
-        }
+        function __construct(){}
         function __clone(){}
 
         function __destruct(){
@@ -17,6 +13,7 @@
         }
 
         public function abrirConexao(){
+            include "../environment/env.php";
             try{
                 $this->conexao = new pdo("mysql:host=".$ENV_DEV['hostname'].";dbname=".$ENV_DEV['dbname'], $ENV_DEV['username'], $ENV_DEV['password']);
             }catch(Exception $e){

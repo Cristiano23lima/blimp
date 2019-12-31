@@ -57,6 +57,15 @@
         public function setEndereco($endereco){
             $this->endereco = $endereco;
         }
+
+        public function labels(){
+            return array(
+                'nome' => $this->nome,
+                'email' => $this->email,
+                'telefone' => $this->telefone
+            );
+        }
+
     }
 
 ?>

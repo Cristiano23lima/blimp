@@ -24,6 +24,10 @@
 </head>
 
 <body>
+    <?php
+        $mod = isset($_GET['mod'])?$_GET['mod']:null;
+        $pg = isset($_GET['pg'])?$_GET['pg']:null;
+    ?>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -310,6 +314,11 @@
             <div class="container-fluid">
                 <!-- Aqui fica nosso conteudo do sistema -->
                 <?php 
+                    if(file_exists("src/view/$mod/$pg.php")){
+                        include "src/view/$mod/$pg.php";
+                    }else{
+                        include "src/view/error/404.php";
+                    }
                     //script para inclusão de arquivos
                 ?>
             </div>
@@ -320,7 +329,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer text-center">
-                Todos os direitos reservados. Bimp Design.
+                Todos os direitos reservados. Blimp Design.
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

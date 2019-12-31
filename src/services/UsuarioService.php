@@ -5,7 +5,7 @@
     class UsuarioService{
         function inserirUsuario(Usuario $usuario){
             $conexao = new Conexao();
-            $inserir = $conexao->prepare("INSERT INTO tb_usuario(email, nome, senha, telefone, endereco) VALUES(:email, :nome, :senha, :telefone, :endereco)");
+            $inserir = $conexao->prepare("INSERT INTO tb_usuarios(email, nome, senha, telefone, endereco) VALUES(:email, :nome, :senha, :telefone, :endereco)");
             $inserir->bindValue(":nome", $usuario->getNome());
             $inserir->bindValue(":email", $usuario->getEmail());
             $inserir->bindValue(":telefone", $usuario->getTelefone());
@@ -20,11 +20,9 @@
 
         function buscarTodosUsuarios(){
             $conexao = new Conexao();
-            $buscar = $conexao->prepare("SELECT * FROM tb_usuario");
+            $buscar = $conexao->abrirConexao()->prepare("SELECT * FROM tb_usuarios");
             if($buscar->execute() === true){
-                $usuario = array(new Usuario());
-                $usuario = $buscar->fetchAll();
-                return $usuario;
+                return $buscar->fetchAll();
             }else{
                 return false;
             }
@@ -32,7 +30,7 @@
 
         function buscarUsuarioId($id){
             $conexao = new Conexao();
-            $buscar = $conexao->prepare("SELECT * FROM tb_usuario WHERE id = :id");
+            $buscar = $conexao->abrirConexao()->prepare("SELECT * FROM tb_usuarios WHERE id = :id");
             $buscar->bindValue(":id", $id);
             if($buscar->execute() === true){
                 $dados = $buscar->fetch(PDO::FETCH_OBJ);

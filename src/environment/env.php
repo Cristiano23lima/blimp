@@ -1,7 +1,7 @@
 <?php
     $ENV_DEV = array(
         "hostname" => "localhost",
-        "dbname" => "test",
+        "dbname" => "bimp",
         "username" => "root",
         "password" => ""
     );
@@ -11,5 +11,5 @@
         "dbname" => "test",
         "username" => "root",
         "password" => ""
-    )
+    );
 ?>
